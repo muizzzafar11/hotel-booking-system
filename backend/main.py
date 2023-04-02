@@ -18,33 +18,3 @@ app.add_middleware(
 app.include_router(chain.routes)
 app.include_router(hotel.routes)
 app.include_router(room.routes)
-# class Booking(BaseModel):
-#     firstName: str
-#     lastName: str
-#     phoneNum: str
-#     email: str
-
-# def insertData(bookingData: Booking):
-#     cnx = mysql.connector.connect(
-#         user='root',
-#         password='root
-#         host='localhost',
-#         database='sys'
-#     )
-#     cursor = cnx.cursor()
-
-#     query = "INSERT INTO bookings (firstName, lastName, phoneNum, email) VALUES (%s, %s, %s, %s)"
-#     data = (bookingData.firstName, bookingData.lastName, bookingData.phoneNum, bookingData.email)
-
-#     cursor.execute(query, data)
-#     cnx.commit()
-
-#     cursor.close()
-#     cnx.close()
-
-# @app.post("/api/bookings")
-# async def addBooking(data: Booking):
-#     insertData(data)
-#     print(data.firstName)
-#     return {"message": "Contact data added to database"}
-
