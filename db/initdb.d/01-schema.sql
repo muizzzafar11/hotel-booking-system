@@ -78,6 +78,8 @@ CREATE TABLE renting(
     checkin_date DATE NOT NULL,
     checkout_date DATE NOT NULL,
     ssn_customer VARCHAR(50) NOT NULL,
+    ssn_employee VARCHAR(50) NOT NULL,
     FOREIGN KEY (room_number) REFERENCES room(room_number),
     FOREIGN KEY (ssn_customer) REFERENCES customer(ssn_customer)
+    FOREIGN KEY (ssn_employee) REFERENCES employee(ssn_employee)
 );

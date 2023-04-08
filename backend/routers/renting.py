@@ -72,7 +72,7 @@ async def rentRoom(req: RentRequest):
         # If customer doesn't exist, insert them into the customer table
         cursor.execute("INSERT INTO customer (ssn_customer, first_name, last_name, registration_date) VALUES (%s, %s, %s, CURDATE())", (req.ssn_customer, req.first_name, req.last_name))
     # Insert the booking details into the booking table
-    cursor.execute("INSERT INTO renting (room_number, checkin_date, checkout_date, ssn_customer) VALUES (%s, %s, %s, %s)", (req.room_number, req.checkin_date, req.checkout_date, req.ssn_customer))
+    cursor.execute("INSERT INTO renting (room_number, checkin_date, checkout_date, ssn_customer, ssn_employee) VALUES (%s, %s, %s, %s, %s)", (req.room_number, req.checkin_date, req.checkout_date, req.ssn_customer, req.ssn_employee))
     
     # Commit the changes to the database
     cnx.commit()

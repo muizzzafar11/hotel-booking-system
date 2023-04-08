@@ -57,8 +57,8 @@ async def get_customer_rooms(ssn_customer: str):
     # return the list of rooms as JSON
     return rooms
 
-@routes.post("/api/changeBookingType/{booking_id}")
-async def change_booking_type(booking_id: int):
+@routes.post("/api/changeBookingType/{booking_id}/{ssn_employee}")
+async def change_booking_type(booking_id: int, ssn_employee: int):
     # connect to the database
     cnx = mysql.connector.connect(
         user='root',
@@ -68,16 +68,31 @@ async def change_booking_type(booking_id: int):
     )
 
     # prepare the SQL query
-    query = """
-        SELECT * from booking b WHERE b.booking_id = %i
-        INSERT INTO renting (room_number, checkin_date, checkout_date, ssn_customer)
-        VALUES (b.room_number, b.checkin_date, b.checkout_date, b.ssn_customer);
+    select_query = """
+        SELECT * FROM booking WHERE booking_id = %s
     """
+    insert_query = """
+        INSERT INTO renting (room_number, checkin_date, checkout_date, ssn_customer, ssn_employee)
+        VALUES (%s, %s, %s, %s, %s)
+    """
+
     cursor = cnx.cursor()
 
-    cursor.execute(query, booking_id)
+    # select the booking with the given booking_id
+    cursor.execute(select_query, (booking_id,))
+    booking = cursor.fetchone()
+
+    if not booking:
+        return "Booking not found"
+
+    # insert a new row into the renting table
+    cursor.execute(insert_query, (booking[1], booking[2], booking[3], booking[4], ssn_employee))
+
+    # commit the changes
+    cnx.commit()
+
     # close the database connection
     cursor.close()
     cnx.close()
-    # return the list of rooms as JSON
+    
     return ""

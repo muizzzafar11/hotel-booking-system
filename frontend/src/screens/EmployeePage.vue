@@ -137,7 +137,7 @@ export default {
             if(this.ssn_employee == null) {
                 alert("Please Enter ssn_employee");
             } else {
-                axios.post(`http://0.0.0.0:8000/api/changeBookingType/${booking_id}`)
+                axios.post(`http://0.0.0.0:8000/api/changeBookingType/${booking_id}/${this.ssn_employee}`)
                 .then(response => {
                    alert('updated booking to renting', response)
                 })
