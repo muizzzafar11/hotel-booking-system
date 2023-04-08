@@ -14,6 +14,7 @@ CREATE TABLE hotels(
     hotel_name VARCHAR(50) NOT NULL,
     number_rooms INT NOT NULL,
     address VARCHAR(100) NOT NULL,
+    area VARCHAR(100) NOT NULL,
     email VARCHAR(50) NOT NULL,
     phone VARCHAR(50) NOT NULL
 );
@@ -62,7 +63,7 @@ CREATE TABLE customer(
 );
 
 CREATE TABLE booking(
-    booking_id INT PRIMARY KEY,
+    booking_id INT PRIMARY KEY AUTO_INCREMENT,
     room_number INT NOT NULL,
     checkin_date DATE NOT NULL,
     checkout_date DATE NOT NULL,
@@ -72,7 +73,7 @@ CREATE TABLE booking(
 );
 
 CREATE TABLE renting(
-    renting_id INT PRIMARY KEY,
+    renting_id INT PRIMARY KEY AUTO_INCREMENT,
     room_number INT NOT NULL,
     checkin_date DATE NOT NULL,
     checkout_date DATE NOT NULL,

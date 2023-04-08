@@ -4,13 +4,6 @@ import mysql.connector
 
 routes = APIRouter()
 
-class Hotel(BaseModel):
-    chainName: str
-    lastName: str
-    numHotels: str
-    email: str
-    phoneNum: str
-
 @routes.get("/api/getHotelList")
 async def getHotelList(rating: int, chain_id: int):
     cnx = mysql.connector.connect(

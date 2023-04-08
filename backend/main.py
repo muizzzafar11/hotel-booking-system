@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 # from pydantic import BaseModel
 # import mysql.connector
-from routers import chain, hotel, room
+from routers import chain, hotel, room, booking, employee, renting
 
 app = FastAPI()
 
@@ -18,3 +18,6 @@ app.add_middleware(
 app.include_router(chain.routes)
 app.include_router(hotel.routes)
 app.include_router(room.routes)
+app.include_router(booking.routes)
+app.include_router(employee.routes)
+app.include_router(renting.routes)

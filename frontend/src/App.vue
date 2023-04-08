@@ -1,12 +1,19 @@
 <template>
-  <div class="m-4">
+  <div class="mx-3 my-2">
+    <NavigationBar class="mb-3"/>
     <router-view />
   </div>
 </template>
 
 <script>
+import NavigationBar from './components/NavbarComponent.vue';
+// import router from './router';
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    NavigationBar,
+    // router
+  }
 }
 </script>
 
@@ -17,6 +24,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 0px;
 }
 </style>
