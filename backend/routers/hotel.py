@@ -9,7 +9,7 @@ async def getHotelList(rating: int, chain_id: int):
     cnx = mysql.connector.connect(
         user='root',
         password='root',
-        host='localhost',
+        host='db',
         database='DBAssignment'
     )
     cursor = cnx.cursor()

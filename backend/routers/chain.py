@@ -16,7 +16,7 @@ async def getChainsList():
     cnx = mysql.connector.connect(
         user='root',
         password='root',
-        host='localhost',
+        host='db',
         database='DBAssignment'
     )
     cursor = cnx.cursor()
@@ -36,7 +36,7 @@ async def getChainsNameList():
     cnx = mysql.connector.connect(
         user='root',
         password='root',
-        host='localhost',
+        host='db',
         database='DBAssignment'
     )
     cursor = cnx.cursor()

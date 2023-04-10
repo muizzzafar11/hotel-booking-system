@@ -73,7 +73,7 @@ async def getRoomList(
     cnx = mysql.connector.connect(
         user='root',
         password='root',
-        host='localhost',
+        host='db',
         database='DBAssignment'
     )
     cursor = cnx.cursor()

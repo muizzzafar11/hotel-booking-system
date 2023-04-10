@@ -35,7 +35,7 @@ CREATE TABLE employee(
 );
 
 CREATE TABLE role(
-    role_id INT PRIMARY KEY,
+    role_id INT PRIMARY KEY AUTO_INCREMENT,
     hotel_id INT NOT NULL,
     role VARCHAR(50) NOT NULL,
     ssn_employee VARCHAR(50) NOT NULL,
@@ -83,6 +83,8 @@ CREATE TABLE renting(
     FOREIGN KEY (ssn_customer) REFERENCES customer(ssn_customer),
     FOREIGN KEY (ssn_employee) REFERENCES employee(ssn_employee)
 );
+
+USE DBAssignment;
 
 -- Inserting data into the hotel_chains table
 INSERT INTO hotel_chains (chain_id, chain_name, number_hotels, email, phone)
@@ -188,7 +190,6 @@ VALUES
     (39, 5, 5, 39),
     (40, 3, 5, 40);
 
--- Inserting room data into tables
 DELIMITER //
 CREATE PROCEDURE my_proc()
 BEGIN
@@ -210,3 +211,36 @@ END//
 DELIMITER ;
 
 CALL my_proc();
+
+DELIMITER //
+CREATE PROCEDURE my_proc_employee()
+BEGIN
+	DECLARE hotel_id INT DEFAULT 1;
+	WHILE hotel_id <= 40 DO
+	    -- Insert 3 managers and 5 employees for hotel with current hotel_id
+	    INSERT INTO employee (ssn_employee, first_name, last_name)
+	    VALUES (CONCAT('m101', hotel_id), 'Manager', CONCAT('Hotel', hotel_id)),
+	           (CONCAT('m102', hotel_id), 'Manager', CONCAT('Hotel', hotel_id)),
+	           (CONCAT('m103', hotel_id), 'Manager', CONCAT('Hotel', hotel_id)),
+	           (CONCAT('e101', hotel_id), 'Employee', CONCAT('Hotel', hotel_id)),
+	           (CONCAT('e102', hotel_id), 'Employee', CONCAT('Hotel', hotel_id)),
+	           (CONCAT('e103', hotel_id), 'Employee', CONCAT('Hotel', hotel_id)),
+	           (CONCAT('e104', hotel_id), 'Employee', CONCAT('Hotel', hotel_id)),
+	           (CONCAT('e105', hotel_id), 'Employee', CONCAT('Hotel', hotel_id));
+	    
+	    INSERT INTO role (hotel_id, role, ssn_employee)
+	    VALUES (hotel_id, 'manager', CONCAT('m101', hotel_id)),
+	           (hotel_id, 'manager', CONCAT('m102', hotel_id)),
+	           (hotel_id, 'manager', CONCAT('m103', hotel_id)),
+	           (hotel_id, 'employee', CONCAT('e101', hotel_id)),
+	           (hotel_id, 'employee', CONCAT('e102', hotel_id)),
+	           (hotel_id, 'employee', CONCAT('e103', hotel_id)),
+	           (hotel_id, 'employee', CONCAT('e104', hotel_id)),
+	           (hotel_id, 'employee', CONCAT('e105', hotel_id));
+	    
+	    SET hotel_id = hotel_id + 1;
+	END WHILE;
+END//
+DELIMITER ;
+
+CALL my_proc_employee();

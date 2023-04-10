@@ -10,7 +10,7 @@ async def get_customer_rooms(ssn_customer: str):
     cnx = mysql.connector.connect(
         user='root',
         password='root',
-        host='localhost',
+        host='db',
         database='DBAssignment'
     )
 
@@ -63,7 +63,7 @@ async def change_booking_type(booking_id: int, ssn_employee: int):
     cnx = mysql.connector.connect(
         user='root',
         password='root',
-        host='localhost',
+        host='db',
         database='DBAssignment'
     )
 

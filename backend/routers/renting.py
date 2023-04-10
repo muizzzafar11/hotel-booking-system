@@ -18,7 +18,7 @@ async def rentRoom(req: RentRequest):
     cnx = mysql.connector.connect(
         user='root',
         password='root',
-        host='localhost',
+        host='db',
         database='DBAssignment'
     )
     cursor = cnx.cursor()

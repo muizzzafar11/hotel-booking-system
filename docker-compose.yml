@@ -24,6 +24,7 @@ services:
     container_name: db
     environment:
       MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: DBAssignment
     volumes:
       - db_data:/var/lib/mysql
     restart: always
