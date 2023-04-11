@@ -56,6 +56,20 @@ def build_where_clause(filters):
         return ''
 
 
+class RoomListClass(BaseModel):
+    chainNameFilter: str = Query(None),
+    ratingFilter: int = Query(None), 
+    roomCapacityFilter: int = Query(None),  
+    viewFilter: str = Query(None),          
+    priceFilter: int = Query(None),
+    canExtendFilter: bool = Query(None),
+    amenitiesFilter: str = Query(None),
+    checkinDateFilter: str = Query(None),
+    checkoutDateFilter: str = Query(None),
+    areaFilter: str = Query(None),
+    roomNumberFilter: int = Query(None)
+
+
 @routes.get("/api/getRoomList")
 async def getRoomList(
               chainNameFilter: str = Query(None),

@@ -14,7 +14,7 @@
         <div class="form-group mb-3">
         <v-select
         clearable
-        v-model="filters.ratingFiler"
+        v-model="filters.ratingFilter"
         label="Rating Filter"
         :items=ratingList
         ></v-select>
@@ -79,7 +79,7 @@ export default {
         return {
             filters: {
                 chainNameFilter: null,
-                ratingFiler: null,
+                ratingFilter: null,
                 roomCapacityFilter: null,
                 viewFilter: null,
                 priceFilter: null,
