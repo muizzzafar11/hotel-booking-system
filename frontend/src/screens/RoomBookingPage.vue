@@ -84,7 +84,8 @@ export default {
               this.checkin_date = checkinDate
               this.checkout_date = checkoutDate
             }
-            const ssn_employee = localStorage.getItem('checkin_date');
+            const ssn_employee = localStorage.getItem('ssn_employee');
+            console.log(ssn_employee)
             if(ssn_employee != null) {
               this.postReqData = {
                 ssn_customer: this.ssn_customer,
@@ -97,8 +98,8 @@ export default {
               }
               axios.post('http://0.0.0.0:8000/api/rent', this.postReqData)
               .then(response => {
-                  localStorage.setItem('checkin_date', this.filters.checkinDateFilter);
-                  localStorage.setItem('checkout_date', this.filters.checkoutDateFilter);
+                  localStorage.setItem('checkin_date', this.checkin_date);
+                  localStorage.setItem('checkout_date', this.checkout_date);
                   const jsonString = JSON.stringify(response.data);
                   localStorage.setItem('confirmation', jsonString);
                   router.push({
@@ -119,8 +120,8 @@ export default {
               }
               axios.post('http://0.0.0.0:8000/api/book', this.postReqData)
               .then(response => {
-                  localStorage.setItem('checkin_date', this.filters.checkinDateFilter);
-                  localStorage.setItem('checkout_date', this.filters.checkoutDateFilter);
+                  localStorage.setItem('checkin_date', this.checkin_date);
+                  localStorage.setItem('checkout_date', this.checkout_date);
                   const jsonString = JSON.stringify(response.data);
                   localStorage.setItem('confirmation', jsonString);
                   router.push({

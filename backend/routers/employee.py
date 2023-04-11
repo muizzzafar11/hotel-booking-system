@@ -58,7 +58,7 @@ async def get_customer_rooms(ssn_customer: str):
     return rooms
 
 @routes.post("/api/changeBookingType/{booking_id}/{ssn_employee}")
-async def change_booking_type(booking_id: int, ssn_employee: int):
+async def change_booking_type(booking_id: int, ssn_employee: str):
     # connect to the database
     cnx = mysql.connector.connect(
         user='root',

@@ -121,8 +121,9 @@ export default {
             localStorage.setItem('ssn_employee', this.ssn_employee)
         },
         getBookingData() {
-            if(this.ssn_employee == null) {
-                alert("Please Enter ssn_employee");
+            const employee_ssn_loc = localStorage.getItem('ssn_employee')
+            if(employee_ssn_loc == null) {
+                alert("Please Enter ssn_employee and click on submit button");
             } else {
                 axios.get(`http://0.0.0.0:8000/api/bookingRooms/${this.ssn_customer}`)
                 .then(response => {
@@ -134,8 +135,9 @@ export default {
             }
         },
         changeBookingType(booking_id) {
-            if(this.ssn_employee == null) {
-                alert("Please Enter ssn_employee");
+          const employee_ssn_loc = localStorage.getItem('ssn_employee')
+            if(employee_ssn_loc == null) {
+                alert("Please Enter ssn_employee and click on submit button");
             } else {
                 axios.post(`http://0.0.0.0:8000/api/changeBookingType/${booking_id}/${this.ssn_employee}`)
                 .then(response => {
