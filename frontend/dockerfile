@@ -1,8 +1,10 @@
 FROM node:14-alpine
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
+RUN npm i
+RUN npm install popper.js --save
+RUN npm install @popperjs/core --save
 COPY . .
-RUN npm run build
+# RUN npm run build
 EXPOSE 8080
 CMD ["npm", "run", "serve"]
